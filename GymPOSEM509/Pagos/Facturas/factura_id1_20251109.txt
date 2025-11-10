@@ -1,0 +1,12 @@
+
+GymPOSEM509
+Tiquet de suscripcion a membresia
+============================================
+ID del cliente: 1
+Nombre del cliente: juan Mendoza Perez
+Membresia: Bronce
+Fecha y hora: 2025-11-09T19:01:25.278005600
+Subtotal: 200.509
+Descuento: 0 porciento
+Total: 200.509
+Metodo de pago: efectivo
