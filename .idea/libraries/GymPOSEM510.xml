@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="GymPOSEM510">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/GymPOSEM509.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
