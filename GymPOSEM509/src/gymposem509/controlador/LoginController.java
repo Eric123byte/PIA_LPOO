@@ -38,9 +38,9 @@ public class LoginController {
         GestionEmpleadosMorales empleados = new GestionEmpleadosMorales();
         
         // Empleado de prueba
-//        Empleado emp1 = new Empleado("Eric", "Morales", 19, "direccion", 0, "psswrd", "Adnibistrador", 100000.0, true);
+         Empleado emp1 = new Empleado("Eric", "Morales", 19, "direccion", 0, "psswrd", "Adnibistrador", 100000.0, true);
 //        Empleado emp2 = new Empleado("Juan", "Perez", 21, "direccion", 1, "12345", "chalan", 100.0, false);
-//        empleados.agregarEmpleado(emp, emp1);
+        empleados.agregarEmpleado(emp, emp1);
 //        empleados.agregarEmpleado(emp, emp2);
 
         // Apenas se ejecute el programa leerá a todos los empleados que hay registrados
