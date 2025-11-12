@@ -64,6 +64,7 @@ public class LoginController implements Initializable {
         boolean find = false;
 
         for(Empleado e: emp){
+            System.out.println(e.getNombre());
             if(e_id.equals(String.valueOf(e.getId())) && e.isAcceso()){
                 find = true;
                 if(e_pswrd.equals(e.getPasswrd())){
@@ -127,6 +128,12 @@ public class LoginController implements Initializable {
         // 1. Carga el nuevo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../vista/" + fxmlFile));
         Parent root = loader.load();
+
+        if(fxmlFile.equals("registroView.fxml")){
+            RegistroController c = loader.getController();
+            c.setEmp(emp);
+            c.setEmpleados(empleados);
+        }
 
         // 2. (Opcional: Si necesitas pasar datos al nuevo controlador)
         // Controller c = loader.getController();

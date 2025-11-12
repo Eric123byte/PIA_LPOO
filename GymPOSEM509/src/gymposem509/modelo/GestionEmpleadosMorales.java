@@ -63,9 +63,9 @@ public class GestionEmpleadosMorales {
         }
     }
     
-    public String serializarEmpleado(List<Empleado> empleados){
+    public String serializarEmpleado(List<Empleado> empleados, String nombre){
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String nombreArchivo = "empleado_" + timestamp + ".dat";
+        String nombreArchivo = "empleado_"+ nombre + "_" + timestamp + ".dat";
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {
             oos.writeObject(empleados);
         } catch (IOException e) {
@@ -98,13 +98,13 @@ public class GestionEmpleadosMorales {
     public String agregarEmpleado(List<Empleado> empleados, String nombre, String apellido, int edad, String direccion, int id, String passwrd, String puesto, double salario, boolean acceso){
         Empleado e = new Empleado(nombre, apellido, edad, direccion, id, passwrd, puesto, salario, acceso);
         empleados.add(e);
-        String nombre_archivo = this.serializarEmpleado(empleados);
+        String nombre_archivo = this.serializarEmpleado(empleados,nombre);
         return nombre_archivo;
     }
     
     public String agregarEmpleado(List<Empleado> empleados, Empleado e){
         empleados.add(e);
-        String nombre_archivo = this.serializarEmpleado(empleados);
+        String nombre_archivo = this.serializarEmpleado(empleados, e.getNombre());
         return nombre_archivo;
     }
     
