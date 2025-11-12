@@ -25,6 +25,9 @@ public class LoginController {
     @FXML
     private  Button registrarButton;
 
+    @FXML
+    private TextField contrasenaTextField;
+
     
     public void initialize() {
 
@@ -40,13 +43,14 @@ public class LoginController {
         // Apenas se ejecute el programa leerá a todos los empleados que hay registrados
         empleados.cargarEmpleado(emp);
 
+        System.out.println("xd");
         
         // Acciones del boton "Aceptar" del menú de inicio de sesion
-/*        logginButton.setOnAction(event -> {
+        logginButton.setOnAction(event -> {
             
             ControlAccesoEmpleadosMorales controlAcceso = new ControlAccesoEmpleadosMorales();
             String e_id = idTextField.getText();
-            String e_pswrd = idTextField.getText();
+            String e_pswrd = contrasenaTextField.getText();
             boolean find = false;
             
             for(Empleado e: emp){
@@ -66,7 +70,6 @@ public class LoginController {
                 System.out.println("No se encontro el ID o no tiene acceso");
             empleados.mostrarEmpleados(emp);
         });
-        */
 
         
     }
