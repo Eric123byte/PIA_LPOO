@@ -108,7 +108,6 @@ public class LoginController implements Initializable {
         // --- NUEVA LÓGICA (Como pediste) ---
         System.out.println("Botón 'Registrar' presionado. Cargando escena de registro...");
         
-        /*
         // ¡Oki! Aquí va la lógica para cargar tu FXML de registro.
         // ¡Solo quita los comentarios cuando tengas el archivo listo!
         
@@ -117,7 +116,6 @@ public class LoginController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
     }
 
     /**

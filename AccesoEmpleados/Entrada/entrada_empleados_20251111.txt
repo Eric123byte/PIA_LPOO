@@ -1,1 +1,1 @@
-ID del empleado: 0, Nombre: Eric, Apellidos: Morales, Hora de entrada: 2025-11-11T19:58:38.177945100
+ID del empleado: 0, Nombre: Eric, Apellidos: Morales, Hora de entrada: 2025-11-11T20:05:14.862151200

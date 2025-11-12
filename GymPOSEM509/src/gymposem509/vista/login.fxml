@@ -77,7 +77,7 @@
                   </Button>
                </left>
                <right>
-                  <Button fx:id="registrarButton" mnemonicParsing="false" styleClass="button-primary" text="Registrar Usuario" BorderPane.alignment="CENTER">
+                  <Button fx:id="registrarButton" mnemonicParsing="false" onAction="#btnRegistrar" styleClass="button-primary" text="Registrar Usuario" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
