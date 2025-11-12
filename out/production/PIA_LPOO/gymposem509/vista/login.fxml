@@ -67,7 +67,7 @@
             </TextField>
             <BorderPane prefHeight="63.0" prefWidth="540.0">
                <left>
-                  <Button fx:id="logginButton" alignment="CENTER" mnemonicParsing="false" styleClass="button-primary" text="Iniciar Sesión" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Button fx:id="logginButton" alignment="CENTER" mnemonicParsing="false" onAction="#btnIngresar" styleClass="button-primary" text="Iniciar Sesión" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

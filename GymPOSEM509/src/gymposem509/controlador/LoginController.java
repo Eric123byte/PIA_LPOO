@@ -26,8 +26,10 @@ public class LoginController implements Initializable {
     // --- Tus FXML ---
     @FXML
     private TextField idTextField;
+
     @FXML
-    private PasswordField passwordTextField; // ¡Asegúrate de cambiar tu TextField a PasswordField en el FXML!
+    private TextField contrasenaTextField;
+
     @FXML
     private Button logginButton;
     @FXML
@@ -54,10 +56,10 @@ public class LoginController implements Initializable {
      * Este método se llama cuando presionas "Sign In"
      */
 
-    private void btnIngresar(ActionEvent event) {
+    public void btnIngresar(ActionEvent event) {
 
         String e_id = idTextField.getText();
-        String e_pswrd = passwordTextField.getText(); // ¡Leemos del PasswordField!
+        String e_pswrd = contrasenaTextField.getText(); // ¡Leemos del PasswordField!
         boolean find = false;
 
         for(Empleado e: emp){
@@ -92,7 +94,6 @@ public class LoginController implements Initializable {
         if(!find) {
             // --- ¡ERROR DE USUARIO! ---
             System.out.println("No se encontro el ID o no tiene acceso");
-            lbError.setText("ID no encontrado o sin acceso.");
             // ¡Muestra la alerta de ERROR!
             mostrarAlerta("Error", "Datos inválidos. ID no encontrado o sin acceso.", Alert.AlertType.ERROR);
         }
@@ -102,7 +103,7 @@ public class LoginController implements Initializable {
      * Este método se llama cuando presionas "Registrar"
      */
 
-    private void btnRegistrar(ActionEvent event) {
+    public void btnRegistrar(ActionEvent event) {
 
         // --- NUEVA LÓGICA (Como pediste) ---
         System.out.println("Botón 'Registrar' presionado. Cargando escena de registro...");
@@ -123,7 +124,7 @@ public class LoginController implements Initializable {
      * Un método "helper" (ayudante) para cambiar de escena
      * y no repetir código. ¡Súper pro! 🤓
      */
-    private void cambiarDeEscena(ActionEvent event, String fxmlFile, String newTitle) throws IOException {
+    public void cambiarDeEscena(ActionEvent event, String fxmlFile, String newTitle) throws IOException {
         // 1. Carga el nuevo FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../vista/" + fxmlFile));
         Parent root = loader.load();
@@ -147,7 +148,7 @@ public class LoginController implements Initializable {
      * Un método "helper" (ayudante) para mostrar alertas
      * y no repetir código. 💖
      */
-    private void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
+    public void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);
         alerta.setHeaderText(null); // (Se ve más limpio sin cabecera)
