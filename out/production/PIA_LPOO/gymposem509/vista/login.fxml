@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../../Recursos/styles/login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="121.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
          <padding>
@@ -27,14 +27,14 @@
       </BorderPane>
    </top>
    <center>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" BorderPane.alignment="TOP_CENTER">
+      <VBox fx:id="loginContainer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" styleClass="loginContainer" BorderPane.alignment="TOP_CENTER">
          <children>
-            <Label text="Iniciar sesión">
+            <Label styleClass="label-titulo" text="Iniciar sesión">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
-            <Label text="Ingrese los datos de la cuenta de Proton.">
+            <Label styleClass="label-subtitulo" text="Ingrese los datos de la cuenta de Proton.">
                <font>
                   <Font size="24.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="idTextField" prefHeight="54.0" prefWidth="540.0" promptText="Ingresa tu id">
+            <TextField fx:id="idTextField" prefHeight="54.0" prefWidth="540.0" promptText="Ingresa tu id" styleClass="text-field">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>
@@ -57,14 +57,14 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="contrasenaTextFiel" prefHeight="52.0" prefWidth="540.0" promptText="Ingresa tu contraseña">
+            <TextField fx:id="contrasenaTextFiel" prefHeight="52.0" prefWidth="540.0" promptText="Ingresa tu contraseña" styleClass="password-field">
                <VBox.margin>
                   <Insets bottom="70.0" />
                </VBox.margin>
             </TextField>
             <BorderPane prefHeight="63.0" prefWidth="540.0">
                <left>
-                  <Button fx:id="logginButton" alignment="CENTER" mnemonicParsing="false" text="Iniciar Sesión" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Button fx:id="logginButton" alignment="CENTER" mnemonicParsing="false" styleClass="button-primary" text="Iniciar Sesión" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -74,7 +74,7 @@
                   </Button>
                </left>
                <right>
-                  <Button fx:id="registrarButton" mnemonicParsing="false" text="Registrar Usuario" BorderPane.alignment="CENTER">
+                  <Button fx:id="registrarButton" mnemonicParsing="false" styleClass="button-primary" text="Registrar Usuario" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

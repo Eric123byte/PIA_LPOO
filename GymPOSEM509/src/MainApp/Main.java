@@ -18,7 +18,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gymposem509/vista/login.fxml"));
         Scene scene = new Scene(loader.load());
 
-        String css = Objects.requireNonNull(this.getClass().getResource("login.css")).toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("/styles/login.css")).toExternalForm();
         scene.getStylesheets().add(css);
 
         primaryStage.setScene(scene);

@@ -25,7 +25,7 @@
  * o simplemente si es el único VBox/Pane grande, le aplicamos el estilo.
  * Si es un VBox, usa 'VBox#nombreDelID' o '.vbox-container' si le pones una clase
  */
-.login-container { /* Asume que tu VBox principal tiene la clase 'login-container' */
+.loginContainer  { /* Asume que tu VBox principal tiene la clase 'login-container' */
     -fx-background-color: -fondo-tarjeta;
     -fx-background-radius: 12px; /* Esquinas redondeadas */
     -fx-border-color: -borde-tarjeta;
