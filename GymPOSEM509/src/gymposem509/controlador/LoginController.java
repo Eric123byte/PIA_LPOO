@@ -20,6 +20,9 @@ public class LoginController {
     @FXML
     private Button logginButton;
 
+    @FXML
+    private  Button registrarButton;
+
     
     public void initialize() {
         
@@ -37,7 +40,7 @@ public class LoginController {
 
         
         // Acciones del boton "Aceptar" del menú de inicio de sesion
-        logginButton.setOnAction(event -> {
+/*        logginButton.setOnAction(event -> {
             
             ControlAccesoEmpleadosMorales controlAcceso = new ControlAccesoEmpleadosMorales();
             String e_id = idTextField.getText();
@@ -61,116 +64,8 @@ public class LoginController {
                 System.out.println("No se encontro el ID o no tiene acceso");
             empleados.mostrarEmpleados(emp);
         });
-        
-        // Acciones del boton "Registrar" del menú de inicio de sesion
-        botonRegistrar.setOnAction(event -> {
-            datos_sesion.getChildren().clear();
-            barra_boton_registrar.getChildren().clear();
-            
-            Button iniciar_sesion = new Button();
-            Button aceptarRegistro = new Button();
-            MenuItem op1 = new MenuItem("Acceso permitido");
-            MenuItem op2 = new MenuItem("Acceso denegado");
-            
-            TextField nombre = new TextField();
-            TextField apellido = new TextField();
-            TextField edad = new TextField();
-            TextField direccion = new TextField();
-            TextField id = new TextField();
-            TextField puesto = new TextField();
-            TextField salario = new TextField();
-            MenuButton acceso = new MenuButton("Acceso", null, op1, op2);
-            TextField password = new TextField();
-            int[] tiene_acceso = {0};
-            
-            nombre.setText("Nombres");
-            apellido.setText("Apellidos");
-            edad.setText("Edad");
-            direccion.setText("Direccion");
-            id.setText("ID");
-            puesto.setText("Puesto");
-            salario.setText("Salario");
-            password.setText("Contraseña");
-            
-            datos_sesion.getChildren().add(nombre);
-            datos_sesion.getChildren().add(apellido);
-            datos_sesion.getChildren().add(edad);
-            datos_sesion.getChildren().add(direccion);
-            datos_sesion.getChildren().add(id);
-            datos_sesion.getChildren().add(puesto);
-            datos_sesion.getChildren().add(salario);
-            datos_sesion.getChildren().add(acceso);
-            datos_sesion.getChildren().add(password);
-            
-            iniciar_sesion.setText("Iniciar Sesion");
-            aceptarRegistro.setText("Aceptar");
-            barra_boton_registrar.getChildren().add(iniciar_sesion);
-            datos_sesion.getChildren().add(aceptarRegistro);
-            
-            // Regresa al menú de Inicio de sesion cuando presione este boton
-            iniciar_sesion.setOnAction(evento -> {
-                datos_sesion.getChildren().clear();
-                barra_boton_registrar.getChildren().clear();
-                
-                datos_sesion.getChildren().add(sesion_id);
-                datos_sesion.getChildren().add(sesion_password);
-                datos_sesion.getChildren().add(botonAceptar);
-                barra_boton_registrar.getChildren().add(botonRegistrar);
-            });
-            
-            // Opcion de dar acceso al programa
-            op1.setOnAction(evento -> {
-                acceso.setText("Acceso permitido");
-                tiene_acceso[0] = 1;
-            });
-            
-            // Opcion de negar el acceso al programa
-            op2.setOnAction(evento -> {
-                acceso.setText("Acceso denegado");
-                tiene_acceso[0] = 0;
-            });
-            
-            // Registra al empleado si no esta yá registrado
-            aceptarRegistro.setOnAction(evento -> {
-                int campo_id = Integer.parseInt(id.getText());
-                boolean found = false;
-                for(Empleado e: emp){
-                    if(campo_id == e.getId()){
-                        found = true;
-                        Label error = new Label();
-                        error.setText("ID ya ingresado.\nFavor de ingresar uno nuevo.");
-                        datos_sesion.getChildren().add(error);
-                        break;
-                    }
-                }
-                
-                if(!found){
-                    String campo_nombre = nombre.getText();
-                    String campo_apellido = apellido.getText();
-                    String campo_edad = edad.getText();
-                    String campo_direccion = direccion.getText();
-                    String campo_puesto = puesto.getText();
-                    double campo_salario = Double.parseDouble(salario.getText());
-                    String campo_password = password.getText();
-                    boolean acceso_actual;
-                    
-                    if(tiene_acceso[0] == 1){
-                        acceso_actual = true;
-                    } else {
-                        acceso_actual = false;
-                    }
-                    
-                    Empleado e1 = new Empleado(campo_nombre, campo_apellido, Integer.parseInt(campo_edad), campo_direccion, campo_id, campo_password, campo_puesto, campo_salario, acceso_actual);
-                    empleados.agregarEmpleado(emp, e1);
-                    
-                    iniciar_sesion.fire();
-                }
-                
-                System.out.println("Boton aceptar registro");
-            });
-            
-            System.out.println("Registrar");
-        });
+        */
+
         
     }
 }
