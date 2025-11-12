@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,6 +126,82 @@ public class RegistroController{
 
         }
     }
+
+
+    // Validar que el ID no se repita
+    public void validarID(javafx.scene.input.KeyEvent keyEvent) {
+        String texto = id.getText().trim();
+        if (texto.isEmpty()) {
+            id.setStyle("");
+            return;
+        }
+        int valor;
+        try {
+            valor = Integer.parseInt(texto);
+        } catch (NumberFormatException ex) {
+            id.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            return;
+        }
+        boolean existe = emp.stream().anyMatch(e -> e.getId() == valor);
+        if (existe) {
+            id.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+        } else {
+            id.setStyle("");
+        }
+    }
+
+    // Validar que el salario sea numérico
+    public void validarSalario(javafx.scene.input.KeyEvent keyEvent) {
+        String texto = salario.getText().trim();
+        if (texto.isEmpty()) {
+            salario.setStyle("");
+            return;
+        }
+
+        double valor;
+        try{
+            valor = Double.parseDouble(texto);
+            salario.setStyle("");
+        } catch (NumberFormatException ex){
+            salario.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+        }
+    };
+
+    // Validar que la contraseña tenga al menos 8 caracteres, un numero, una mayuscula y un caracter especial
+    public void validarContrasena(javafx.scene.input.KeyEvent keyEvent) {
+        String txt = contrasena.getText();
+        if (txt == null || txt.trim().isEmpty()) {
+            contrasena.setStyle("");
+            return;
+        }
+        boolean cumple = txt.length() >= 8
+                && txt.matches(".*\\d.*")
+                && txt.matches(".*[A-Z].*")
+                && txt.matches(".*[^a-zA-Z0-9].*");
+        if (cumple) {
+            contrasena.setStyle("");
+        } else {
+            contrasena.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+        }
+    };
+
+
+    // Validacion generica: no vacíos y sin números (solo letras Unicode, espacios, guiones y apóstrofes)
+    public void validarNombres(javafx.scene.input.KeyEvent keyEvent) {
+        TextField campo = (TextField) keyEvent.getSource();
+        String texto = campo.getText().trim();
+        if (texto.isEmpty()) {
+            campo.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            return;
+        }
+        // Regex: \p{L} = cualquier letra Unicode; permite espacios, guiones y apóstrofes
+        if (texto.matches("^[\\p{L} \\-']+$")) {
+            campo.setStyle("");
+        } else {
+            campo.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+        }
+    }
+
 
     public void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
         Alert alerta = new Alert(tipo);

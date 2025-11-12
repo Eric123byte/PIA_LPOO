@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymposem509.controlador.RegistroController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#validarContrasena" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymposem509.controlador.RegistroController">
    <top>
       <BorderPane prefHeight="89.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
          <bottom>
@@ -31,7 +31,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="nombre" prefHeight="30.0" prefWidth="600.0" styleClass="text-field">
+            <TextField fx:id="nombre" onKeyReleased="#validarNombres" prefHeight="30.0" prefWidth="600.0" styleClass="text-field">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -41,7 +41,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="apellidos" prefHeight="30.0" prefWidth="600.0">
+            <TextField fx:id="apellidos" onKeyReleased="#validarNombres" prefHeight="30.0" prefWidth="600.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -67,7 +67,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="id" prefHeight="30.0" prefWidth="600.0">
+            <TextField fx:id="id" onKeyReleased="#validarID" prefHeight="30.0" prefWidth="600.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -87,7 +87,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="salario" prefHeight="30.0" prefWidth="600.0">
+            <TextField fx:id="salario" onKeyReleased="#validarSalario" prefHeight="30.0" prefWidth="600.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
