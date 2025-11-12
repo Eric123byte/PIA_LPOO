@@ -46,10 +46,9 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("pee");
         // Empleado de prueba
         Empleado emp1 = new Empleado("Eric", "Morales", 19, "direccion", 0, "psswrd", "Adnibistrador", 100000.0, true);
-        empleados.agregarEmpleado(emp, emp1);
+        //empleados.agregarEmpleado(emp, emp1);
         empleados.cargarEmpleado(emp); // Carga empleados del .dat
     }
 
