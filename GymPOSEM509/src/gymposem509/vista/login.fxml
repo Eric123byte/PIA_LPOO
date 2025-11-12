@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="121.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
@@ -48,7 +47,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField prefHeight="54.0" prefWidth="540.0">
+            <TextField fx:id="idTextField" prefHeight="54.0" prefWidth="540.0" promptText="Ingresa tu id">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>
@@ -58,12 +57,12 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField prefHeight="52.0" prefWidth="540.0">
+            <TextField fx:id="contrasenaTextFiel" prefHeight="52.0" prefWidth="540.0" promptText="Ingresa tu contraseña">
                <VBox.margin>
                   <Insets bottom="70.0" />
                </VBox.margin>
             </TextField>
-            <Button alignment="CENTER" mnemonicParsing="false" text="Iniciar Sesión" textAlignment="CENTER">
+            <Button fx:id="logginButton" alignment="CENTER" mnemonicParsing="false" text="Iniciar Sesión" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

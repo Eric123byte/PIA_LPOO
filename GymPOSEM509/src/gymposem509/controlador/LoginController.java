@@ -15,22 +15,11 @@ import javafx.scene.layout.VBox;
 public class LoginController {
     
     @FXML
-    private VBox datos_sesion;
-    
+    private TextField idTextField;
+
     @FXML
-    private HBox barra_boton_registrar;
-    
-    @FXML
-    private Label label;
-    
-    @FXML
-    private Button botonRegistrar;
-    
-    @FXML
-    private TextField sesion_id;
-    
-    @FXML
-    private TextField sesion_password;
+    private Button logginButton;
+
     
     public void initialize() {
         
@@ -45,31 +34,14 @@ public class LoginController {
 
         // Apenas se ejecute el programa leerá a todos los empleados que hay registrados
         empleados.cargarEmpleado(emp);
+
         
-        label.setText("Inicio de sesión");
-        
-        Button botonAceptar = new Button();
-        Button botonRegistrar = new Button();
-        TextField sesion_id = new TextField();
-        TextField sesion_password = new TextField();
-        
-        
-        botonAceptar.setText("Aceptar");
-        botonRegistrar.setText("Registrar");
-        sesion_id.setPromptText("ID del empleado");
-        sesion_password.setPromptText("Contraseña");
-        
-        datos_sesion.getChildren().add(sesion_id);
-        datos_sesion.getChildren().add(sesion_password);
-        datos_sesion.getChildren().add(botonAceptar);
-        barra_boton_registrar.getChildren().add(botonRegistrar);
-        
-        // Acciones del boton "Acpetar" del menú de inicio de sesion
-        botonAceptar.setOnAction(event -> {
+        // Acciones del boton "Aceptar" del menú de inicio de sesion
+        logginButton.setOnAction(event -> {
             
             ControlAccesoEmpleadosMorales controlAcceso = new ControlAccesoEmpleadosMorales();
-            String e_id = sesion_id.getText();
-            String e_pswrd = sesion_password.getText();
+            String e_id = idTextField.getText();
+            String e_pswrd = idTextField.getText();
             boolean find = false;
             
             for(Empleado e: emp){
