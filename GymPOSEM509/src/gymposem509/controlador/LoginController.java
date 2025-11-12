@@ -43,8 +43,6 @@ public class LoginController {
         // Apenas se ejecute el programa leerá a todos los empleados que hay registrados
         empleados.cargarEmpleado(emp);
 
-        System.out.println("xd");
-        
         // Acciones del boton "Aceptar" del menú de inicio de sesion
         logginButton.setOnAction(event -> {
             
