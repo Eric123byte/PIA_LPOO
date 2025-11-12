@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../../Recursos/styles/login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../Recursos/style/login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="121.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
          <padding>
@@ -20,10 +20,13 @@
          <left>
             <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@../../../Recursos/logo.jpg" />
+                  <Image url="@../../Recursos/logo.jpg" />
                </image>
             </ImageView>
          </left>
+         <center>
+            <Label text="Label" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </top>
    <center>
