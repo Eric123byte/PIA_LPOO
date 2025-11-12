@@ -7,6 +7,7 @@ import java.io.IOException; // ¡Importante!
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -136,6 +137,11 @@ public class LoginController implements Initializable {
 
         // 4. Pone la nueva escena en la ventana
         Scene scene = new Scene(root);
+
+        String css = Objects.requireNonNull(this.getClass().getResource("/Recursos/style/login.css")).toExternalForm();
+        scene.getStylesheets().add(css);
+
+
         stage.setScene(scene);
         stage.setTitle(newTitle);
         stage.centerOnScreen();

@@ -10,6 +10,7 @@
     -borde-tarjeta: #E0E0E0; /* Borde gris sutil para el recuadro */
     -color-primario: #6C5CE7; /* Morado para el botón principal */
     -color-primario-hover: #7E6EEA; /* Morado un poco más claro para el hover */
+    -color-secundario-hover: #E4E4EB;
     -color-texto-principal: #333333; /* Gris oscuro para textos grandes */
     -color-texto-secundario: #666666; /* Gris para textos pequeños */
     -color-texto-link: #6C5CE7; /* Morado para enlaces */
@@ -49,7 +50,7 @@
     -fx-font-family: "Roboto", "Segoe UI", sans-serif;
     -fx-font-size: 15px;
     -fx-text-fill: -color-texto-secundario;
-    -fx-padding: 0 0 20px 0;
+    -fx-padding: 0px 0 20px 0;
 }
 
 /* --- Etiquetas de Campo (Correo o nombre de usuario, Contraseña) --- */
@@ -115,5 +116,19 @@
     -fx-background-color: derive(-color-primario, -10%); /* Un poco más oscuro al presionar */
 }
 
+.button-secundary{
+    -fx-background-color: -fondo-claro;
+    -fx-text-field : black;
+    -fx-font-weight: bold;
+        -fx-background-radius: 8px;
+}
+
+.button-secundary:hover {
+    -fx-background-color: -color-secundario-hover;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 12, 0.2, 0, 3);
+}
+.button-secundary:pressed {
+    -fx-background-color: derive(-fondo-claro, -10%); /* Un poco más oscuro al presionar */
+}
 
 /* --- Bot
