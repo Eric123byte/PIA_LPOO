@@ -51,7 +51,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="edad" prefHeight="30.0" prefWidth="600.0" styleClass="text-field">
+            <TextField fx:id="edad" onKeyReleased="#validarEdad" prefHeight="30.0" prefWidth="600.0" styleClass="text-field">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -61,7 +61,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="direccion" prefHeight="28.0" prefWidth="600.0" />
+            <TextField fx:id="direccion" onKeyReleased="#validarDireccion" prefHeight="28.0" prefWidth="600.0" />
             <Label styleClass="label-subtitulo" text="id">
                <font>
                   <Font size="18.0" />
@@ -97,7 +97,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="contrasena" prefHeight="30.0" prefWidth="600.0" />
+            <TextField fx:id="contrasena" onKeyReleased="#validarContrasena" prefHeight="30.0" prefWidth="600.0" />
             <Button mnemonicParsing="false" onAction="#registrarUsuario" styleClass="button-primary" text="Registrar">
                <VBox.margin>
                   <Insets top="39.0" />

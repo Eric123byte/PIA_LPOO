@@ -49,7 +49,7 @@ public class RegistroController{
     // Banderas
     boolean nombreValido = false, apellidosValido = false,
             edadValido = false, direccionValido = false,
-            idValido = false, puestoValido = false, salarioValido = false, contrasenaValida = false;
+            idValido = false, puestoValido = true, salarioValido = false, contrasenaValida = false;
 
     private List<Empleado> emp = new ArrayList<>();
     private GestionEmpleadosMorales empleados = new GestionEmpleadosMorales();
@@ -118,7 +118,8 @@ public class RegistroController{
             if(campo_id == e.getId()){
                 found = true;
                 Label error = new Label();
-                System.out.println("ID ya ingresado.\nFavor de ingresar uno nuevo.");
+                mostrarAlerta("ID ya ingresado", "Favor de ingresar uno nuevo.", Alert.AlertType.ERROR);
+                //System.out.println("ID ya ingresado.\nFavor de ingresar uno nuevo.");
                 break;
             }
         }
@@ -234,31 +235,71 @@ public class RegistroController{
         if (texto.isEmpty()) {
             campo.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 
-            if(campo.getId() == "nombre"){
+            if(campo.getId().equals("nombre")){
                 nombreValido = false;
-            } else if (campo.getId() == "apellidos"){
+            } else if (campo.getId().equals("apellidos")){
                 apellidosValido = false;
             }
             return;
         }
         // Regex: \p{L} = cualquier letra Unicode; permite espacios, guiones y apóstrofes
         if (texto.matches("^[\\p{L} \\-']+$")) {
-            if(campo.getId() == "nombre"){
+            System.out.println(campo.getId());
+            if(campo.getId().equals("nombre")){
                 nombreValido = true;
-            } else if (campo.getId() == "apellidos"){
+            } else if (campo.getId().equals("apellidos")){
                 apellidosValido = true;
             }
             campo.setStyle("");
 
         } else {
-            if(campo.getId() == "nombre"){
+            if(campo.getId().equals("nombre")){
                 nombreValido = false;
-            } else if (campo.getId() == "apellidos"){
+            } else if (campo.getId().equals("apellidos")){
                 apellidosValido = false;
             }
             campo.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
         }
-    }
+    };
+
+
+    public void validarEdad(javafx.scene.input.KeyEvent keyEvent) {
+        String texto = edad.getText().trim();
+        if (texto.isEmpty()) {
+            edad.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            edadValido = false;
+            return;
+        }
+        int valor;
+        try {
+            valor = Integer.parseInt(texto);
+            if (valor > 0 && valor < 120) {
+                edad.setStyle("");
+                edadValido = true;
+            } else {
+                edad.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                edadValido = false;
+            }
+        } catch (NumberFormatException ex) {
+            edad.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            edadValido = false;
+        }
+    };
+
+
+    public void validarDireccion(javafx.scene.input.KeyEvent keyEvent) {
+        String texto = direccion.getText().trim();
+        if (texto.isEmpty()) {
+            direccion.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            direccionValido = false;
+            return;
+        } else {
+            direccion.setStyle("");
+            direccionValido = true;
+        }
+    };
+
+
 
 
     public void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
