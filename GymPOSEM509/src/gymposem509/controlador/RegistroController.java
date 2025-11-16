@@ -119,7 +119,7 @@ public class RegistroController{
                 found = true;
                 Label error = new Label();
                 mostrarAlerta("ID ya ingresado", "Favor de ingresar uno nuevo.", Alert.AlertType.ERROR);
-                //System.out.println("ID ya ingresado.\nFavor de ingresar uno nuevo.");
+
                 break;
             }
         }
