@@ -1,204 +1,168 @@
-
 package gymposem509.controlador;
 
-import MainApp.Main;
 import gymposem509.modelo.ControlAccesoEmpleadosMorales;
 import gymposem509.modelo.Empleado;
 import gymposem509.modelo.GestionEmpleadosMorales;
+import java.io.IOException; // ¡Importante!
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader; // ¡Importante!
+import javafx.fxml.Initializable;
+import javafx.scene.Node; // ¡Importante!
+import javafx.scene.Parent; // ¡Importante!
+import javafx.scene.Scene; // ¡Importante!
+import javafx.scene.control.*; // ¡Importante!
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage; // ¡Importante!
 
-public class LoginController {
-    
+
+public class LoginController implements Initializable {
+
+    // --- Tus FXML ---
     @FXML
-    private VBox datos_sesion;
-    
+    private TextField idTextField;
+
     @FXML
-    private HBox barra_boton_registrar;
-    
+    private TextField contrasenaTextField;
+
     @FXML
-    private Label label;
-    
+    private Button logginButton;
     @FXML
-    private Button botonRegistrar;
-    
+    private  Button registrarButton;
     @FXML
-    private TextField sesion_id;
-    
-    @FXML
-    private TextField sesion_password;
-    
-    public void initialize() {
-        
-        List<Empleado> emp = new ArrayList<>();
-        GestionEmpleadosMorales empleados = new GestionEmpleadosMorales();
-        
+    private Label lbError; // (¡Añadí este @FXML, asumo que quieres usar la etiqueta de error!)
+
+    // --- Tu lógica de negocio ---
+    private List<Empleado> emp = new ArrayList<>();
+    private GestionEmpleadosMorales empleados = new GestionEmpleadosMorales();
+    private ControlAccesoEmpleadosMorales controlAcceso = new ControlAccesoEmpleadosMorales();
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         // Empleado de prueba
-         Empleado emp1 = new Empleado("Eric", "Morales", 19, "direccion", 0, "psswrd", "Adnibistrador", 100000.0, true);
-//        Empleado emp2 = new Empleado("Juan", "Perez", 21, "direccion", 1, "12345", "chalan", 100.0, false);
-        empleados.agregarEmpleado(emp, emp1);
-//        empleados.agregarEmpleado(emp, emp2);
+        Empleado emp1 = new Empleado("Eric", "Morales", 19, "direccion", 0, "psswrd", "Adnibistrador", 100000.0, true);
+        //empleados.agregarEmpleado(emp, emp1);
+        empleados.cargarEmpleado(emp); // Carga empleados del .dat
+    }
 
-        // Apenas se ejecute el programa leerá a todos los empleados que hay registrados
-        empleados.cargarEmpleado(emp);
-        
-        label.setText("Inicio de sesión");
-        
-        Button botonAceptar = new Button();
-        Button botonRegistrar = new Button();
-        TextField sesion_id = new TextField();
-        TextField sesion_password = new TextField();
-        
-        
-        botonAceptar.setText("Aceptar");
-        botonRegistrar.setText("Registrar");
-        sesion_id.setPromptText("ID del empleado");
-        sesion_password.setPromptText("Contraseña");
-        
-        datos_sesion.getChildren().add(sesion_id);
-        datos_sesion.getChildren().add(sesion_password);
-        datos_sesion.getChildren().add(botonAceptar);
-        barra_boton_registrar.getChildren().add(botonRegistrar);
-        
-        // Acciones del boton "Acpetar" del menú de inicio de sesion
-        botonAceptar.setOnAction(event -> {
-            
-            ControlAccesoEmpleadosMorales controlAcceso = new ControlAccesoEmpleadosMorales();
-            String e_id = sesion_id.getText();
-            String e_pswrd = sesion_password.getText();
-            boolean find = false;
-            
-            for(Empleado e: emp){
-                if(e_id.equals(String.valueOf(e.getId())) && e.isAcceso()){
-                    find = true;
-                    if(e_pswrd.equals(e.getPasswrd())){
-                        System.out.println("Sesion iniciada");
-                        controlAcceso.registrarEntrada(Integer.parseInt(e_id), e.getNombre(), e.getApellido());
-                        Main.cambiarEscena("guifxml.fxml", "Aplicación Principal");
-                    } else {
-                        System.out.println("Acceso denegado");
+    /**
+     * Este método se llama cuando presionas "Sign In"
+     */
+
+    public void btnIngresar(ActionEvent event) {
+
+        String e_id = idTextField.getText();
+        String e_pswrd = contrasenaTextField.getText(); // ¡Leemos del PasswordField!
+        boolean find = false;
+
+        for(Empleado e: emp){
+            System.out.println(e.getNombre());
+            if(e_id.equals(String.valueOf(e.getId())) && e.isAcceso()){
+                find = true;
+                if(e_pswrd.equals(e.getPasswrd())){
+                    // --- ¡ÉXITO! ---
+                    System.out.println("Sesion iniciada");
+                    controlAcceso.registrarEntrada(Integer.parseInt(e_id), e.getNombre(), e.getApellido());
+
+                    // ¡1. Muestra la alerta de ÉXITO!
+                    mostrarAlerta("Inicio de Sesión", "¡Inicio de sesión correcto! Bienvenido.", Alert.AlertType.INFORMATION);
+
+                    // ¡2. Cambia la escena!
+                    try {
+                        cambiarDeEscena(event, "guifxml.fxml", "GymPOS - Dashboard"); //
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
                     }
-                    break;
+
+                } else {
+                    // --- ¡ERROR DE CONTRASEÑA! ---
+                    System.out.println("Acceso denegado");
+                    lbError.setText("Contraseña incorrecta.");
+                    // ¡Muestra la alerta de ERROR!
+                    mostrarAlerta("Error", "Datos inválidos. Contraseña incorrecta.", Alert.AlertType.ERROR);
                 }
+                break; // Salimos del bucle
             }
-            if(!find)
-                System.out.println("No se encontro el ID o no tiene acceso");
-            empleados.mostrarEmpleados(emp);
-        });
+        }
+
+        if(!find) {
+            // --- ¡ERROR DE USUARIO! ---
+            System.out.println("No se encontro el ID o no tiene acceso");
+            // ¡Muestra la alerta de ERROR!
+            mostrarAlerta("Error", "Datos inválidos. ID no encontrado o sin acceso.", Alert.AlertType.ERROR);
+        }
+    }
+
+    /**
+     * Este método se llama cuando presionas "Registrar"
+     */
+
+    public void btnRegistrar(ActionEvent event) {
+
+        // --- NUEVA LÓGICA (Como pediste) ---
+        System.out.println("Botón 'Registrar' presionado. Cargando escena de registro...");
         
-        // Acciones del boton "Registrar" del menú de inicio de sesion
-        botonRegistrar.setOnAction(event -> {
-            datos_sesion.getChildren().clear();
-            barra_boton_registrar.getChildren().clear();
-            
-            Button iniciar_sesion = new Button();
-            Button aceptarRegistro = new Button();
-            MenuItem op1 = new MenuItem("Acceso permitido");
-            MenuItem op2 = new MenuItem("Acceso denegado");
-            
-            TextField nombre = new TextField();
-            TextField apellido = new TextField();
-            TextField edad = new TextField();
-            TextField direccion = new TextField();
-            TextField id = new TextField();
-            TextField puesto = new TextField();
-            TextField salario = new TextField();
-            MenuButton acceso = new MenuButton("Acceso", null, op1, op2);
-            TextField password = new TextField();
-            int[] tiene_acceso = {0};
-            
-            nombre.setText("Nombres");
-            apellido.setText("Apellidos");
-            edad.setText("Edad");
-            direccion.setText("Direccion");
-            id.setText("ID");
-            puesto.setText("Puesto");
-            salario.setText("Salario");
-            password.setText("Contraseña");
-            
-            datos_sesion.getChildren().add(nombre);
-            datos_sesion.getChildren().add(apellido);
-            datos_sesion.getChildren().add(edad);
-            datos_sesion.getChildren().add(direccion);
-            datos_sesion.getChildren().add(id);
-            datos_sesion.getChildren().add(puesto);
-            datos_sesion.getChildren().add(salario);
-            datos_sesion.getChildren().add(acceso);
-            datos_sesion.getChildren().add(password);
-            
-            iniciar_sesion.setText("Iniciar Sesion");
-            aceptarRegistro.setText("Aceptar");
-            barra_boton_registrar.getChildren().add(iniciar_sesion);
-            datos_sesion.getChildren().add(aceptarRegistro);
-            
-            // Regresa al menú de Inicio de sesion cuando presione este boton
-            iniciar_sesion.setOnAction(evento -> {
-                datos_sesion.getChildren().clear();
-                barra_boton_registrar.getChildren().clear();
-                
-                datos_sesion.getChildren().add(sesion_id);
-                datos_sesion.getChildren().add(sesion_password);
-                datos_sesion.getChildren().add(botonAceptar);
-                barra_boton_registrar.getChildren().add(botonRegistrar);
-            });
-            
-            // Opcion de dar acceso al programa
-            op1.setOnAction(evento -> {
-                acceso.setText("Acceso permitido");
-                tiene_acceso[0] = 1;
-            });
-            
-            // Opcion de negar el acceso al programa
-            op2.setOnAction(evento -> {
-                acceso.setText("Acceso denegado");
-                tiene_acceso[0] = 0;
-            });
-            
-            // Registra al empleado si no esta yá registrado
-            aceptarRegistro.setOnAction(evento -> {
-                int campo_id = Integer.parseInt(id.getText());
-                boolean found = false;
-                for(Empleado e: emp){
-                    if(campo_id == e.getId()){
-                        found = true;
-                        Label error = new Label();
-                        error.setText("ID ya ingresado.\nFavor de ingresar uno nuevo.");
-                        datos_sesion.getChildren().add(error);
-                        break;
-                    }
-                }
-                
-                if(!found){
-                    String campo_nombre = nombre.getText();
-                    String campo_apellido = apellido.getText();
-                    String campo_edad = edad.getText();
-                    String campo_direccion = direccion.getText();
-                    String campo_puesto = puesto.getText();
-                    double campo_salario = Double.parseDouble(salario.getText());
-                    String campo_password = password.getText();
-                    boolean acceso_actual;
-                    
-                    if(tiene_acceso[0] == 1){
-                        acceso_actual = true;
-                    } else {
-                        acceso_actual = false;
-                    }
-                    
-                    Empleado e1 = new Empleado(campo_nombre, campo_apellido, Integer.parseInt(campo_edad), campo_direccion, campo_id, campo_password, campo_puesto, campo_salario, acceso_actual);
-                    empleados.agregarEmpleado(emp, e1);
-                    
-                    iniciar_sesion.fire();
-                }
-                
-                System.out.println("Boton aceptar registro");
-            });
-            
-            System.out.println("Registrar");
-        });
+        // ¡Oki! Aquí va la lógica para cargar tu FXML de registro.
+        // ¡Solo quita los comentarios cuando tengas el archivo listo!
         
+        try {
+            cambiarDeEscena(event, "registroView.fxml", "Registro de Empleado");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Un método "helper" (ayudante) para cambiar de escena
+     * y no repetir código. ¡Súper pro! 🤓
+     */
+    public void cambiarDeEscena(ActionEvent event, String fxmlFile, String newTitle) throws IOException {
+        // 1. Carga el nuevo FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../vista/" + fxmlFile));
+        Parent root = loader.load();
+
+        if(fxmlFile.equals("registroView.fxml")){
+            RegistroController c = loader.getController();
+            c.setEmp(emp);
+            c.setEmpleados(empleados);
+        }
+
+        // 2. (Opcional: Si necesitas pasar datos al nuevo controlador)
+        // Controller c = loader.getController();
+        // c.inicializar("Dato a pasar");
+
+        // 3. Obtiene la ventana (Stage) actual
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // 4. Pone la nueva escena en la ventana
+        Scene scene = new Scene(root);
+
+        String css = Objects.requireNonNull(this.getClass().getResource("/Recursos/style/login.css")).toExternalForm();
+        scene.getStylesheets().add(css);
+
+
+        stage.setScene(scene);
+        stage.setTitle(newTitle);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    /**
+     * Un método "helper" (ayudante) para mostrar alertas
+     * y no repetir código. 💖
+     */
+    public void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null); // (Se ve más limpio sin cabecera)
+        alerta.setContentText(contenido);
+        alerta.showAndWait();
     }
 }

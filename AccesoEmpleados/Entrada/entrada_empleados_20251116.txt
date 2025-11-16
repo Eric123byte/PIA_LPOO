@@ -1,0 +1,1 @@
+ID del empleado: 190, Nombre: Alberto, Apellidos: Vazquez, Hora de entrada: 2025-11-16T14:31:18.740339400

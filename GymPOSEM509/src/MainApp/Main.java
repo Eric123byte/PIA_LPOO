@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Main extends Application {
     
     private static Stage stagePrincipal;
@@ -15,6 +17,10 @@ public class Main extends Application {
         stagePrincipal = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gymposem509/vista/login.fxml"));
         Scene scene = new Scene(loader.load());
+
+        String css = Objects.requireNonNull(this.getClass().getResource("/Recursos/style/login.css")).toExternalForm();
+        scene.getStylesheets().add(css);
+
         primaryStage.setScene(scene);
         primaryStage.setTitle("GymPOSEM509");
         primaryStage.show();

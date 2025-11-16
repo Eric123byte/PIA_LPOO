@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="GymPOSEM510">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/GymPOSEM509/dist/GymPOSEM509.jar!/" />
+      <root url="jar://$PROJECT_DIR$/GymPOSEM509.zip!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
