@@ -46,6 +46,11 @@ public class RegistroController{
     @FXML
     private  TextField contrasena;
 
+    // Banderas
+    boolean nombreValido = false, apellidosValido = false,
+            edadValido = false, direccionValido = false,
+            idValido = false, puestoValido = false, salarioValido = false, contrasenaValida = false;
+
     private List<Empleado> emp = new ArrayList<>();
     private GestionEmpleadosMorales empleados = new GestionEmpleadosMorales();
 
@@ -99,7 +104,15 @@ public class RegistroController{
 
     // Registrar usuario
     public void registrarUsuario(ActionEvent event){
-        int campo_id = Integer.parseInt(id.getText());
+        int campo_id;
+        try{
+            campo_id = Integer.parseInt(id.getText());
+        } catch (NumberFormatException e){
+            id.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            mostrarAlerta("Error en el Registro", "El ID debe ser un número válido.", Alert.AlertType.ERROR);
+            return;
+        }
+
         boolean found = false;
         for(Empleado e: emp){
             if(campo_id == e.getId()){
@@ -116,13 +129,28 @@ public class RegistroController{
             String campo_edad = edad.getText();
             String campo_direccion = direccion.getText();
             String campo_puesto = puesto.getValue();
-            double campo_salario = Double.parseDouble(salario.getText());
+            double campo_salario;
+            try{
+                campo_salario = Double.parseDouble(salario.getText());
+            }
+            catch (Exception e){
+                salario.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                mostrarAlerta("Error en el Registro", "El salario debe ser un número válido.", Alert.AlertType.ERROR);
+                return;
+            }
+
             String campo_password = contrasena.getText();
             boolean acceso_actual;
 
+            if(nombreValido && apellidosValido && edadValido && direccionValido && idValido && puestoValido && salarioValido && contrasenaValida){
+                mostrarAlerta("Registro Exitoso", "El empleado ha sido registrado correctamente.", Alert.AlertType.INFORMATION);
+            } else {
+                mostrarAlerta("Error en el Registro", "Por favor, revise los campos marcados en rojo o aquellos vacios", Alert.AlertType.ERROR);
+                return;
+            }
 
             Empleado e1 = new Empleado(campo_nombre, campo_apellido, Integer.parseInt(campo_edad), campo_direccion, campo_id, campo_password, campo_puesto, campo_salario, true);
-            String x = empleados.agregarEmpleado(emp, e1);
+            empleados.agregarEmpleado(emp, e1);
 
         }
     }
@@ -139,14 +167,17 @@ public class RegistroController{
         try {
             valor = Integer.parseInt(texto);
         } catch (NumberFormatException ex) {
+            idValido = false;
             id.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
             return;
         }
         boolean existe = emp.stream().anyMatch(e -> e.getId() == valor);
         if (existe) {
+            idValido = false;
             id.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
         } else {
             id.setStyle("");
+            idValido = true;
         }
     }
 
@@ -155,6 +186,7 @@ public class RegistroController{
         String texto = salario.getText().trim();
         if (texto.isEmpty()) {
             salario.setStyle("");
+            salarioValido = false;
             return;
         }
 
@@ -162,8 +194,10 @@ public class RegistroController{
         try{
             valor = Double.parseDouble(texto);
             salario.setStyle("");
+            salarioValido = true;
         } catch (NumberFormatException ex){
             salario.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            salarioValido = false;
         }
     };
 
@@ -172,6 +206,7 @@ public class RegistroController{
         String txt = contrasena.getText();
         if (txt == null || txt.trim().isEmpty()) {
             contrasena.setStyle("");
+            contrasenaValida = false;
             return;
         }
         boolean cumple = txt.length() >= 8
@@ -180,7 +215,9 @@ public class RegistroController{
                 && txt.matches(".*[^a-zA-Z0-9].*");
         if (cumple) {
             contrasena.setStyle("");
+            contrasenaValida = true;
         } else {
+            contrasenaValida = false;
             contrasena.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
         }
     };
@@ -189,15 +226,36 @@ public class RegistroController{
     // Validacion generica: no vacíos y sin números (solo letras Unicode, espacios, guiones y apóstrofes)
     public void validarNombres(javafx.scene.input.KeyEvent keyEvent) {
         TextField campo = (TextField) keyEvent.getSource();
+
         String texto = campo.getText().trim();
+
+
+
         if (texto.isEmpty()) {
             campo.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+
+            if(campo.getId() == "nombre"){
+                nombreValido = false;
+            } else if (campo.getId() == "apellidos"){
+                apellidosValido = false;
+            }
             return;
         }
         // Regex: \p{L} = cualquier letra Unicode; permite espacios, guiones y apóstrofes
         if (texto.matches("^[\\p{L} \\-']+$")) {
+            if(campo.getId() == "nombre"){
+                nombreValido = true;
+            } else if (campo.getId() == "apellidos"){
+                apellidosValido = true;
+            }
             campo.setStyle("");
+
         } else {
+            if(campo.getId() == "nombre"){
+                nombreValido = false;
+            } else if (campo.getId() == "apellidos"){
+                apellidosValido = false;
+            }
             campo.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
         }
     }
