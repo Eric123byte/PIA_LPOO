@@ -18,6 +18,19 @@ public class Controller {
     
     @FXML
     private VBox menu_lateral;
+
+    @FXML
+    private Button clientes;
+
+    @FXML
+    private Button empleados;
+
+    @FXML
+    private Button inventario;
+
+    @FXML
+    private Button actividades;
+
     
     @FXML
     private void mostrarMenuClientes() {
@@ -47,21 +60,7 @@ public class Controller {
     }
     
     public void initialize() {
-        
-        Button clientes = new Button();
-        Button empleados = new Button();
-        Button inventario = new Button();
-        Button actividades = new Button();
-        
-        clientes.setText("Clientes");
-        empleados.setText("Empleados");
-        inventario.setText("Inventario");
-        actividades.setText("Actividades");
-        
-        menu_lateral.getChildren().add(clientes);
-        menu_lateral.getChildren().add(empleados);
-        menu_lateral.getChildren().add(inventario);
-        menu_lateral.getChildren().add(actividades);
+
         
         // Presiona el boton que despliega el submenú de clientes
         clientes.setOnAction(evento -> {
