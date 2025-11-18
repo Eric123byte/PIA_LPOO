@@ -44,15 +44,15 @@ public class Controller {
     
     private void cargarVista(String rutaFXML) {
         try {
-        Parent vista = FXMLLoader.load(getClass().getResource(rutaFXML));
+            Parent vista = FXMLLoader.load(getClass().getResource(rutaFXML));
 
-        vista.setOpacity(0);
-        contenido.getChildren().setAll(vista);
+            vista.setOpacity(0);
+            contenido.getChildren().setAll(vista);
 
-        FadeTransition fade = new FadeTransition(Duration.millis(400), vista);
-        fade.setFromValue(0);
-        fade.setToValue(1);
-        fade.play();
+            FadeTransition fade = new FadeTransition(Duration.millis(400), vista);
+            fade.setFromValue(0);
+            fade.setToValue(1);
+            fade.play();
 
         } catch (IOException e) {
             e.printStackTrace();

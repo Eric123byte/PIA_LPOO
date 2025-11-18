@@ -68,7 +68,7 @@
     -fx-border-color: -borde-tarjeta; /* Borde gris */
     -fx-border-radius: 6px;
     -fx-border-width: 1px;
-    -fx-padding: 10px 12px;
+    -fx-padding: 12px;
     -fx-font-size: 14px;
     -fx-prompt-text-fill: #999999; /* Color del texto de ayuda */
     -fx-text-fill: -color-texto-principal;
@@ -102,7 +102,7 @@
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-padding: 12px 25px;
+    -fx-padding: 25px;
     -fx-background-radius: 8px;
     -fx-cursor: hand; /* Manita al pasar el mouse */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0.1, 0, 2); /* Sombra para que destaque */
@@ -130,5 +130,3 @@
 .button-secundary:pressed {
     -fx-background-color: derive(-fondo-claro, -10%); /* Un poco más oscuro al presionar */
 }
-
-/* --- Bot
