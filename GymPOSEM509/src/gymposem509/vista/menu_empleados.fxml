@@ -51,6 +51,6 @@
       </VBox>
    </left>
    <center>
-      <VBox fx:id="contenido" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="contenido" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
