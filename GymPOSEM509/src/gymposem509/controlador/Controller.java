@@ -42,6 +42,11 @@ public class Controller {
         cargarVista("/gymposem509/vista/menu_empleados.fxml");
     }
     
+    @FXML
+    private void mostrarMenuInventario() {
+        cargarVista("/gymposem509/vista/menu_inventario.fxml");
+    }
+    
     private void cargarVista(String rutaFXML) {
         try {
             Parent vista = FXMLLoader.load(getClass().getResource(rutaFXML));
@@ -70,6 +75,10 @@ public class Controller {
         // Presiona el boton que despliega el submenú de empleados
         empleados.setOnAction(evento -> {
             mostrarMenuEmpleados();
+        });
+        
+        inventario.setOnAction(evento -> {
+            mostrarMenuInventario();
         });
         
     }

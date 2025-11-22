@@ -121,7 +121,6 @@ public class LoginController implements Initializable {
 
     /**
      * Un método "helper" (ayudante) para cambiar de escena
-     * y no repetir código. ¡Súper pro!
      */
     public void cambiarDeEscena(ActionEvent event, String fxmlFile, String newTitle) throws IOException {
         // 1. Carga el nuevo FXML
@@ -156,7 +155,6 @@ public class LoginController implements Initializable {
 
     /**
      * Un método "helper" (ayudante) para mostrar alertas
-     * y no repetir código. 💖
      */
     public void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
         Alert alerta = new Alert(tipo);
