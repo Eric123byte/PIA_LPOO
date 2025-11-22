@@ -2,12 +2,16 @@ package gymposem509.controlador;
 
 import gymposem509.modelo.Inventario;
 import gymposem509.modelo.GestionInventarioMorales;
-import gymposem509.modelo.ControlAccesoInventarioMorales;
+import gymposem509.modelo.ControlVentasInventarioMorales;
+import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,7 +39,7 @@ public class MenuInventarioController {
 
     private List<Inventario> inventario = new ArrayList<>();
     private GestionInventarioMorales gestor = new GestionInventarioMorales();
-    private ControlAccesoInventarioMorales controlAcceso = new ControlAccesoInventarioMorales();
+    private ControlVentasInventarioMorales controlVentas = new ControlVentasInventarioMorales();
 
     public void initialize() {
 
@@ -56,10 +60,18 @@ public class MenuInventarioController {
         eliminar.setOnAction(e -> mostrarEliminar());
 
         // Registrar entrada/salida
-        entradaSalida.setOnAction(e -> mostrarEntradaSalida());
+        entradaSalida.setOnAction(e -> mostrarVentas());
 
         // Salir del menú
-        salir.setOnAction(e -> System.exit(0));
+        salir.setOnAction(evento -> {
+            try {
+                Parent menuPrincipal = FXMLLoader.load(getClass().getResource("/gymposem509/vista/guifxml.fxml"));
+                Scene escena = salir.getScene();
+                escena.setRoot(menuPrincipal);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
     
     private void mostrarRegistrar() {
@@ -293,58 +305,65 @@ public class MenuInventarioController {
     }
 
     
-    private void mostrarEntradaSalida() {
+    private void mostrarVentas() {
         contenido.getChildren().clear();
 
-        Label titulo = new Label("Registrar movimiento");
-        TextField idBuscar = new TextField();
-        idBuscar.setPromptText("ID del producto");
+        Label titulo = new Label("Registrar venta");
+        TextField cliente = new TextField();
+        cliente.setPromptText("Nombre del cliente");
 
-        Button entrada = new Button("Registrar entrada");
-        Button salida = new Button("Registrar salida");
+        TextField idProducto = new TextField();
+        idProducto.setPromptText("ID del producto");
+        TextField cantidad = new TextField();
+        cantidad.setPromptText("Cantidad");
 
-        contenido.getChildren().addAll(titulo, idBuscar, entrada, salida);
+        Button registrar = new Button("Registrar");
 
-        entrada.setOnAction(e -> {
-            registrarMovimiento(idBuscar, true);
-        });
+        contenido.getChildren().addAll(titulo, cliente, idProducto, cantidad, registrar);
 
-        salida.setOnAction(e -> {
-            registrarMovimiento(idBuscar, false);
-        });
-    }
-
-    private void registrarMovimiento(TextField idBuscar, boolean esEntrada) {
-
-        int id;
-        try { id = Integer.parseInt(idBuscar.getText()); }
-        catch (Exception ex) { mostrarAlerta("Error", "ID no válido."); return; }
-
-        Inventario prod = inventario.stream()
-                .filter(p -> p.getId_producto() == id)
-                .findFirst().orElse(null);
-
-        if (prod == null) {
-            mostrarAlerta("Error", "Producto no encontrado.");
-            return;
-        }
-
-        if (esEntrada) {
-            controlAcceso.registrarEntrada(prod.getId_producto(), prod.getNombre(), prod.getCategoria());
-            prod.setCantidad(prod.getCantidad() + 1);
-            mostrarAlerta("Éxito", "Entrada registrada.");
-        } else {
-            if (prod.getCantidad() <= 0) {
-                mostrarAlerta("Error", "No hay existencias para registrar salida.");
+        registrar.setOnAction(e -> {
+            if (cliente.getText().isEmpty() || idProducto.getText().isEmpty() || cantidad.getText().isEmpty()) {
+                mostrarAlerta("Error", "Todos los campos son obligatorios.");
                 return;
             }
 
-            controlAcceso.registrarSalida(prod.getId_producto(), prod.getNombre(), prod.getCategoria());
-            prod.setCantidad(prod.getCantidad() - 1);
-            mostrarAlerta("Éxito", "Salida registrada.");
-        }
+            try {
+                int id = Integer.parseInt(idProducto.getText());
+                int cant = Integer.parseInt(cantidad.getText());
 
-        gestor.serializarInventario(inventario);
+                Inventario prod = inventario.stream()
+                        .filter(p -> p.getId_producto() == id)
+                        .findFirst().orElse(null);
+
+                if (prod == null) {
+                    mostrarAlerta("Error", "Producto no encontrado.");
+                    return;
+                }
+
+                if (prod.getCantidad() < cant) {
+                    mostrarAlerta("Error", "No hay suficiente inventario.");
+                    return;
+                }
+
+                // Restar inventario
+                prod.setCantidad(prod.getCantidad() - cant);
+
+                // Crear lista para venta (aunque sea un solo producto)
+                List<Inventario> venta = new ArrayList<>();
+                Inventario copia = new Inventario(prod.getNombre(), prod.getDescripcion(), prod.getCategoria(), cant, prod.getPrecioUnitario());
+                copia.setId_producto(prod.getId_producto());
+                venta.add(copia);
+
+                controlVentas.registrarVenta(1, cliente.getText(), venta);
+                gestor.serializarInventario(inventario);
+
+                mostrarAlerta("Éxito", "Venta registrada correctamente.");
+                contenido.getChildren().clear();
+
+            } catch (NumberFormatException ex) {
+                mostrarAlerta("Error", "ID y cantidad deben ser números.");
+            }
+        });
     }
     
     private void mostrarAlerta(String titulo, String msg) {
