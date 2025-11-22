@@ -14,24 +14,28 @@
     <center>
         <StackPane fx:id="contenido" prefHeight="779.0" prefWidth="1500.0">
          <children>
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0" styleClass="loginContainer">
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1200.0" styleClass="loginContainer">
                <children>
-                  <Button fx:id="clientes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="161.0" styleClass="button-primary" text="Clientes">
+                  <Button fx:id="clientes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Clientes">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="empleados" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Empleados">
+                  <Button fx:id="empleados" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Empleados">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="inventario" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Inventario">
+                  <Button fx:id="inventario" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Inventario">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="actividades" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Actividades" />
+                  <Button fx:id="actividades" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Actividades">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin></Button>
+                  <Button minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Reportes" />
                </children>
                <padding>
                   <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
