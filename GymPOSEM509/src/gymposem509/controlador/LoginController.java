@@ -121,7 +121,7 @@ public class LoginController implements Initializable {
 
     /**
      * Un método "helper" (ayudante) para cambiar de escena
-     * y no repetir código. ¡Súper pro! 🤓
+     * y no repetir código. ¡Súper pro!
      */
     public void cambiarDeEscena(ActionEvent event, String fxmlFile, String newTitle) throws IOException {
         // 1. Carga el nuevo FXML
