@@ -1,0 +1,1 @@
+ID del producto: 2, Nombre: Jabon, Categoría: Higiene, Hora de entrada: 2025-11-21T21:57:43.863589200

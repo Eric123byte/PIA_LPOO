@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymposem509.controlador.Controller">
+    <center>
+        <StackPane fx:id="contenido" prefHeight="779.0" prefWidth="1500.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1200.0" styleClass="loginContainer">
+               <children>
+                  <Button fx:id="clientes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Clientes">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="empleados" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Empleados">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="inventario" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Inventario">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="actividades" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Actividades">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="reportes" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" styleClass="button-primary" text="Reportes" />
+               </children>
+               <padding>
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+               </padding>
+               <StackPane.margin>
+                  <Insets bottom="100.0" />
+               </StackPane.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" />
+         </BorderPane.margin></StackPane>
+    </center>
+   <top>
+      <BorderPane prefHeight="98.0" prefWidth="1600.0" BorderPane.alignment="BOTTOM_CENTER">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <left>
+            <ImageView fitHeight="105.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="BOTTOM_CENTER">
+               <image>
+                  <Image url="@../../Recursos/logo.jpg" />
+               </image>
+               <BorderPane.margin>
+                  <Insets left="300.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </left>
+         <center>
+            <Label text="Gym Bros" BorderPane.alignment="BOTTOM_CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets right="325.0" />
+               </BorderPane.margin>
+            </Label>
+         </center>
+      </BorderPane>
+   </top>
+</BorderPane>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../Recursos/style/login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymposem509.controlador.LoginController">
+   <top>
+      <BorderPane prefHeight="121.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <left>
+            <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../Recursos/logo.jpg" />
+               </image>
+            </ImageView>
+         </left>
+         <center>
+            <Label text="Label" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </top>
+   <center>
+      <VBox fx:id="loginContainer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" styleClass="loginContainer" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <Label styleClass="label-titulo" text="Iniciar sesión">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label styleClass="label-subtitulo" text="Ingrese los datos de la cuenta de Proton.">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Id de usuario">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="idTextField" prefHeight="54.0" prefWidth="540.0" promptText="Ingresa tu id" styleClass="text-field">
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Contraseña">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="contrasenaTextField" prefHeight="52.0" prefWidth="540.0" promptText="Ingresa tu contraseña" styleClass="password-field">
+               <VBox.margin>
+                  <Insets bottom="70.0" />
+               </VBox.margin>
+            </TextField>
+            <BorderPane prefHeight="63.0" prefWidth="540.0">
+               <left>
+                  <Button fx:id="logginButton" alignment="CENTER" mnemonicParsing="false" onAction="#btnIngresar" styleClass="button-primary" text="Iniciar Sesión" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
+               </left>
+               <right>
+                  <Button fx:id="registrarButton" mnemonicParsing="false" onAction="#btnRegistrar" styleClass="button-primary" text="Registrar Usuario" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </right>
+            </BorderPane>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

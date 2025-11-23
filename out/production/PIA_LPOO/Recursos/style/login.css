@@ -1,0 +1,132 @@
+/*
+ * login.css - Estilos para la pantalla de inicio de sesión
+ */
+
+/* --- Colores Base --- */
+/* (Puedes cambiar estos colores si quieres otros tonos) */
+.root {
+    -fondo-claro: #F5F5F9; /* Fondo muy clarito */
+    -fondo-tarjeta: #FFFFFF; /* Blanco para el recuadro principal */
+    -borde-tarjeta: #E0E0E0; /* Borde gris sutil para el recuadro */
+    -color-primario: #6C5CE7; /* Morado para el botón principal */
+    -color-primario-hover: #7E6EEA; /* Morado un poco más claro para el hover */
+    -color-secundario-hover: #E4E4EB;
+    -color-texto-principal: #333333; /* Gris oscuro para textos grandes */
+    -color-texto-secundario: #666666; /* Gris para textos pequeños */
+    -color-texto-link: #6C5CE7; /* Morado para enlaces */
+}
+
+/* --- Fondo General de la Ventana --- */
+.root {
+    -fx-background-color: -fondo-claro;
+}
+
+/* --- Estilo del Contenedor Principal (La "Tarjeta" Central) --- */
+/* Asume que tu VBox principal tiene un fx:id o un estilo para identificarlo,
+ * o simplemente si es el único VBox/Pane grande, le aplicamos el estilo.
+ * Si es un VBox, usa 'VBox#nombreDelID' o '.vbox-container' si le pones una clase
+ */
+.loginContainer  { /* Asume que tu VBox principal tiene la clase 'login-container' */
+    -fx-background-color: -fondo-tarjeta;
+    -fx-background-radius: 12px; /* Esquinas redondeadas */
+    -fx-border-color: -borde-tarjeta;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.1, 0, 2); /* Sombra sutil */
+    -fx-padding: 30px; /* Espacio interno */
+}
+
+/* --- Títulos (Iniciar sesión) --- */
+.label-titulo { /* Asume que tu Label "Iniciar sesión" tiene la clase 'label-titulo' */
+    -fx-font-family: "Roboto", "Segoe UI", sans-serif; /* Puedes poner la fuente que quieras */
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-texto-principal;
+    -fx-padding: 0 0 5px 0;
+}
+
+/* --- Subtítulos (Ingrese los datos...) --- */
+.label-subtitulo { /* Asume que tu Label "Ingrese los datos..." tiene la clase 'label-subtitulo' */
+    -fx-font-family: "Roboto", "Segoe UI", sans-serif;
+    -fx-font-size: 15px;
+    -fx-text-fill: -color-texto-secundario;
+    -fx-padding: 0px 0 20px 0;
+}
+
+/* --- Etiquetas de Campo (Correo o nombre de usuario, Contraseña) --- */
+.label-campo { /* Asume que tus Labels de los campos tienen la clase 'label-campo' */
+    -fx-font-family: "Roboto", "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-texto-principal;
+    -fx-padding: 15px 0 5px 0;
+}
+
+/* --- Campos de Texto y Contraseña (TextField, PasswordField) --- */
+.text-field, .password-field {
+    -fx-background-color: -fondo-tarjeta; /* Fondo blanco */
+    -fx-border-color: -borde-tarjeta; /* Borde gris */
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-padding: 12px;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #999999; /* Color del texto de ayuda */
+    -fx-text-fill: -color-texto-principal;
+}
+.text-field:focused, .password-field:focused { /* Borde azul al estar enfocado */
+    -fx-border-color: -color-primario;
+    -fx-border-width: 2px;
+}
+
+/* --- CheckBox (Mantener mi sesión iniciada) --- */
+.check-box .box {
+    -fx-background-color: -fondo-tarjeta;
+    -fx-border-color: -borde-tarjeta;
+    -fx-border-radius: 3px;
+    -fx-border-width: 1px;
+}
+.check-box:selected .box {
+    -fx-background-color: -color-primario;
+    -fx-border-color: -color-primario;
+}
+.check-box .mark {
+    -fx-background-color: white;
+}
+.check-box .text {
+    -fx-text-fill: -color-texto-secundario;
+}
+
+/* --- Botón Principal (Iniciar Sesión) --- */
+.button-primary { /* Clase para el botón principal */
+    -fx-background-color: -color-primario;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 25px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand; /* Manita al pasar el mouse */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0.1, 0, 2); /* Sombra para que destaque */
+    -fx-alignment: CENTER; /* Para centrar el texto si el botón es grande */
+}
+.button-primary:hover {
+    -fx-background-color: -color-primario-hover;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 12, 0.2, 0, 3);
+}
+.button-primary:pressed {
+    -fx-background-color: derive(-color-primario, -10%); /* Un poco más oscuro al presionar */
+}
+
+.button-secundary{
+    -fx-background-color: -fondo-claro;
+    -fx-text-field : black;
+    -fx-font-weight: bold;
+        -fx-background-radius: 8px;
+}
+
+.button-secundary:hover {
+    -fx-background-color: -color-secundario-hover;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 12, 0.2, 0, 3);
+}
+.button-secundary:pressed {
+    -fx-background-color: derive(-fondo-claro, -10%); /* Un poco más oscuro al presionar */
+}

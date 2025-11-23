@@ -1,0 +1,78 @@
+===== GYM POSEM 509 - REPORTE EMPLEADOS =====
+Generado por: admin
+Fecha de generación: 22/11/2025 17:32:07
+
+Total de empleados: 10
+------------------------------------
+
+Nombre: Eric
+Apellido: Morales
+Edad: 19
+ID: 0
+Puesto: Adnibistrador
+------------------------------------
+
+Nombre: Eric
+Apellido: Morales
+Edad: 19
+ID: 0
+Puesto: Adnibistrador
+------------------------------------
+
+Nombre: Danna
+Apellido: Paola
+Edad: 30
+ID: 7
+Puesto: Recepcionista
+------------------------------------
+
+Nombre: Danna
+Apellido: Paola
+Edad: 30
+ID: 10
+Puesto: Recepcionista
+------------------------------------
+
+Nombre: danna
+Apellido: paola
+Edad: 23
+ID: 120
+Puesto: Recepcionista
+------------------------------------
+
+Nombre: ds
+Apellido: sd
+Edad: 12
+ID: 12
+Puesto: Recepcionista
+------------------------------------
+
+Nombre: df
+Apellido: sd
+Edad: 21
+ID: 123
+Puesto: Recepcionista
+------------------------------------
+
+Nombre: Alberto
+Apellido: Vazquez
+Edad: 19
+ID: 190
+Puesto: Recepcionista
+------------------------------------
+
+Nombre: Luis
+Apellido: pepe
+Edad: 12
+ID: 5
+Puesto: Recepcionista
+------------------------------------
+
+Nombre: Alsd
+Apellido: sdk
+Edad: 12
+ID: 3
+Puesto: Recepcionista
+------------------------------------
+
+===== FIN DEL REPORTE =====

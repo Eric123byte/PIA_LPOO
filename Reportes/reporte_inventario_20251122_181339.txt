@@ -1,0 +1,15 @@
+===== GYM POSEM 509 - REPORTE INVENTARIO =====
+Generado por: admin
+Fecha de generación: 22/11/2025 18:13:39
+
+Total de productos: 1
+------------------------------------
+ID Producto: 2
+Nombre: Jabon
+Descripción: kksd
+Categoría: Higiene
+Cantidad: 13
+Precio Unitario: 20.0
+------------------------------------
+
+===== FIN DEL REPORTE =====

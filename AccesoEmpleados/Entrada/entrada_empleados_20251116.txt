@@ -1,0 +1,1 @@
+ID del empleado: 10, Nombre: Danna, Apellidos: Paola, Hora de entrada: 2025-11-16T17:09:55.592382
